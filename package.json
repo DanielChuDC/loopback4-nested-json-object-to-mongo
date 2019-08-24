@@ -1,0 +1,25 @@
+{
+  "name": "loopback4-nested-json-object-to-mongo",
+  "version": "1.0.0",
+  "description": "loopback 4 insert nested json object to mongo and retrieve it show on swagger api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DanielChuDC/loopback4-nested-json-object-to-mongo.git"
+  },
+  "keywords": [
+    "loopback4",
+    "json",
+    "mongo"
+  ],
+  "author": "DanielChu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DanielChuDC/loopback4-nested-json-object-to-mongo/issues"
+  },
+  "homepage": "https://github.com/DanielChuDC/loopback4-nested-json-object-to-mongo#readme",
+  "dependencies": {}
+}

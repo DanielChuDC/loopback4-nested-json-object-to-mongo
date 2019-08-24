@@ -1,0 +1,14 @@
+version: '2'
+services:
+  mymongo:
+    container_name: mymongo
+    image: mongo
+    ports:
+      - '27017:27017'
+  myloopback:
+    container_name: myloopbackcontainer
+    build: .././loopback-4-nested-json-object-to-mongo
+    ports:
+      - '3000:3000'
+    links:
+      - mymongo
