@@ -1,22 +1,26 @@
-import {Entity, model, property} from '@loopback/repository';
-@model({settings: {}})
-class Category {
-  @property({type: 'string'})
-  name: string;
-  @property({type: 'string'})
-  model: string;
-  @property({
-    type: 'number',
-  })
-  prices: number;
-}
+import {Entity, model, property, hasMany} from '@loopback/repository';
+import {v4 as uuid} from 'uuid';
+import {Cars} from './cars.model';
+
+// @model({settings: {}})
+// class Category {
+//   @property({type: 'string', default: () => uuid()})
+//   name: string;
+//   @property({type: 'string', default: () => uuid()})
+//   model: string;
+//   @property({
+//     type: 'number',
+//     default: () => uuid(),
+//   })
+//   prices: number;
+// }
 
 @model({settings: {}})
 export class Clusters extends Entity {
   @property({
     type: 'string',
     id: true,
-    required: true,
+    generated: true,
   })
   clustername: string;
 
@@ -24,7 +28,10 @@ export class Clusters extends Entity {
     type: 'object',
     required: true,
   })
-  clusterModel: Category;
+  clusterModel: Object;
+
+  @hasMany(() => Cars ,{keyTo: 'clustersClustername'})
+  cars: Cars[];
 
   constructor(data?: Partial<Clusters>) {
     super(data);

@@ -2,20 +2,12 @@ import {Model, model, property} from '@loopback/repository';
 // Import json schema for nested json
 import {getJsonSchema} from '@loopback/repository-json-schema';
 
-@model()
-class Category {
-  @property()
-  name: string;
-  model: string;
-  price: number;
-}
-
 @model({settings: {strict: false}})
 export class Products extends Model {
   @property({
     type: 'string',
     id: true,
-    required: true,
+    generated: true,
   })
   productid: string;
 
@@ -26,12 +18,9 @@ export class Products extends Model {
   productname: string;
 
   @property({
-    type: 'object',
-    required: true,
-    default: Category,
+    type: 'string',
   })
-  productDesc: object;
-
+  carsCarname?: string;
   // Define well-known properties here
 
   // Indexer property to allow additional data
@@ -43,9 +32,9 @@ export class Products extends Model {
   }
 }
 
-// export interface ProductsRelations {
-//   // describe navigational properties here
-// }
+export interface ProductsRelations {
+  // describe navigational properties here
+}
 
-const jsonSchema = getJsonSchema(Products);
-// export type ProductsWithRelations = Products & ProductsRelations;
+// const jsonSchema = getJsonSchema(Products);
+export type ProductsWithRelations = Products & ProductsRelations;
